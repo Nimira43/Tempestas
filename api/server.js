@@ -18,7 +18,7 @@ app.get('/weather', async (req, res) => {
   }
 
   try {
-    const fetch = await import('node-fetch')
+    const { default: fetch } = await import('node-fetch')
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
 
     if (!response.ok) { 
