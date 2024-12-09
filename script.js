@@ -37,10 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayWeather(data) {
       const { name, weather, main } = data
+      const tempCelsius = (main.temp - 273.15).toFixed(2)
       weatherResult.innerHTML = `
         <h3>${name}</h3>
         <p>${weather[0].description}</p>
-        <p>Temperature: ${main.temp}K</p>
+        <p>Temperature: ${tempCelsius}°C</p>
         <button onclick="weatherApp.addFavourite('${name}')">Add to Favourites</button>
       `
     }
