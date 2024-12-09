@@ -9,6 +9,22 @@ body {
   background-color: #012222;
   color: #fffaf0;
 }
+:root {
+  --primary: #012222;
+  --light: #fffaf0;
+  --dark: #111;
+  --size-1: 0.0625rem;
+  --size-2: 0.125rem;
+  --size-3: 0.1875rem;
+  --size-4: 0.25rem;
+  --size-5: 0.3125rem;
+  --size-xs: 0.375rem;
+  --size-sm: 0.5rem;
+  --size-md: 0.625rem;
+  --size-lg: 0.75rem;
+  --size-xl: 0.9375rem;
+  --size-xxl: 1.25rem;
+}
 
 .weather-container {
   background: #111;
@@ -34,4 +50,10 @@ body {
   font-size: 20px;
   outline: none;
   cursor: pointer;
+}
+
+.btn {
+  margin-top: 2rem;
+  font-size: 20px;
+  padding: 0.5rem;
 }
