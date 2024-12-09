@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=League+Spartan:wght@100..900&display=swap');
 
-body {
-  font-family: 'League Spartan', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #012222;
-  color: #fffaf0;
-}
 :root {
   --primary: #012222;
   --light: #fffaf0;
@@ -26,34 +17,55 @@ body {
   --size-xxl: 1.25rem;
 }
 
+body {
+  font-family: 'League Spartan', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--primary);
+  color: var(--light);
+}
 .weather-container {
-  background: #111;
+  background: var(--dark);
   padding: 2rem;
-  border-radius: 3px;
-  border: 2px solid #fffaf0;
+  border-radius: var(--size-3);
+  border: var(--size-2) solid var(--light);
   width: 300px;
 }
 
 .logo {
   margin-top: 0;
   font-family: 'Fredericka the Great', serif;
+  letter-spacing: var(--size-1);
+  font-weight: lighter;
 }
 
 .city-input {
   width: calc(100% - 50px);
-  padding: 0.5rem;
+  padding: var(--size-sm);
   margin-right: 1rem;
-  background-color: #012222;
-  color: #fffaf0;
-  border: 2px solid #fffaf0;;
-  border-radius: 3px;
-  font-size: 20px;
+  background-color: var(--primary);
+  color: var(--light);
+  border: var(--size-2) solid var(--light);
+  border-radius: var(--size-3);
+  font-family: inherit;
+  font-size: var(--size-xxl);
+  font-weight: 300;
   outline: none;
   cursor: pointer;
 }
 
 .btn {
-  margin-top: 2rem;
-  font-size: 20px;
-  padding: 0.5rem;
+  margin-top: 1.5rem;
+  padding: var(--size-sm);
+  background-color: var(--primary);
+  color: var(--light);
+  border: var(--size-2) solid var(--light);
+  border-radius: var(--size-3);
+  font-family: inherit;
+  font-size: var(--size-xxl);
+  font-weight: 300;
+  outline: none;
+
 }
