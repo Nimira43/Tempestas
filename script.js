@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   class WeatherApp {
     constructor() {
       this.favourites = new Set(savedFavourites)
-      // this.renderFavourites()
+      this.renderFavourites()
     }
 
     async handleSearch(event) {
@@ -21,18 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
     addFavourite(city) {
     }
 
-    removeFavorite(city) {
+    removeFavourite(city) {
     }
 
     // update local storage
     
-    renderFavorites() {
+    renderFavourites() {
+      favouritesList.innerHTML = ''
+      this.favourites.forEach(city => {
+        const li = document.createElement('li')
+        li.className = 'favourite-item'
+        li.innerHTML = `
+          ${city}
+          <button onclick='weatherApp.removeFavourite('${city}')'>Remove</button>
+          <button onclick='weatherApp.handleSearch(event, '${city}')'>View</button>
+        `
+        favouritesList.appendChild(li)
+      })
     }
 
     handleSearch(event, city) {
       if (event) event.preventDefault()
-      cityInput.value = city
-      this.fetchAndDisplayWeather(city)
+        cityInput.value = city
+        this.fetchAndDisplayWeather(city)
     }
 
     // async - fetch and display weather
