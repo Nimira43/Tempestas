@@ -67,5 +67,25 @@ body {
   font-size: var(--size-xxl);
   font-weight: 300;
   outline: none;
+  transition: background-color 0.3s ease-in;
+}
 
+.btn:hover {
+  background-color: var(--dark);
+}
+
+.favourites-heading {
+  font-weight: 400;
+}
+
+.weather-result, 
+.favourites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.weather-item,
+.favourite-item {
+  padding: var(--size-sm);
+  border-bottom: var(--size-1) solid var(--primary);
 }
