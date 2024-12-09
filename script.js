@@ -18,9 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     async handleSearch(event) {
       event.preventDefault()
       const city = cityInput.value.trim()
+      if (!city) { 
+        city = cityInput.value.trim(); 
+      }
+      console.log(`Fetching weather for city: ${city}`)
       if (city) {
         try {
-          console.log(`Fetching weather for city: ${city}`)
           const weatherData = await fetchWeather(city)
           this.displayWeather(weatherData)
         } catch (error) {
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displayWeather(data) {
-      const { name, weather, main } = data;
+      const { name, weather, main } = data
       weatherResult.innerHTML = `
         <h3>${name}</h3>
         <p>${weather[0].description}</p>
@@ -70,12 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `
         favouritesList.appendChild(li)
       })
-    }
-
-    handleSearch(event, city) {
-      if (event) event.preventDefault()
-      cityInput.value = city
-      this.fetchAndDisplayWeather(city)
     }
 
     async fetchAndDisplayWeather(city) {
