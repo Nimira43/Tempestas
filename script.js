@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     constructor() {
       this.favourites = new Set(savedFavourites)
       this.renderFavourites()
+      console.log('WeatherApp initialised.')
     }
 
     async handleSearch(event) {
@@ -19,17 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const city = cityInput.value.trim()
       if (city) {
         try {
+          console.log(`Fetching weather for city: ${city}`)
           const weatherData = await fetchWeather(city)
           this.displayWeather(weatherData)
         } catch (error) {
-          console.error(error)
+          console.error('Error in handleSearch:', error)
           weatherResult.textContent = 'Failed to fetch weather data.'
         }
+      } else {
+        weatherResult.textContent = 'Please enter a city name.'
       }
     }
 
     displayWeather(data) {
-      const { name, weather, main } = data
+      const { name, weather, main } = data;
       weatherResult.innerHTML = `
         <h3>${name}</h3>
         <p>${weather[0].description}</p>
@@ -76,15 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async fetchAndDisplayWeather(city) {
       try {
+        console.log(`Fetching and displaying weather for city: ${city}`)
         const weatherData = await fetchWeather(city)
         this.displayWeather(weatherData)
       } catch (error) {
-        console.error(error)
+        console.error('Error in fetchAndDisplayWeather:', error)
         weatherResult.textContent = 'Failed to fetch weather data.'
       }
     }
   }
 
   window.weatherApp = new WeatherApp()
-  weatherForm.addEventListener('submit', event => weatherApp.handleSearch(event))
+  console.log('weatherApp instance created:', window.weatherApp)
+  weatherForm.addEventListener('submit', event => {
+    console.log('Form submitted.')
+    window.weatherApp.handleSearch(event)
+  })
 })
