@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async handleSearch(event) {
       event.preventDefault()
-      const city = cityInput.value
+      const city = cityInput.value.trim()
       if (city) {
         try {
           const weatherData = await fetchWeather(city)
