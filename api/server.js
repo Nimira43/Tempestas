@@ -1,6 +1,5 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const fetch = require('node-fetch')
 
 dotenv.config()
 
@@ -15,6 +14,7 @@ app.get('/weather', async (req, res) => {
   }
 
   try {
+    const fetch = await import('node-fetch')
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
     const data = await response.json()
     res.json(data)
