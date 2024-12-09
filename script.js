@@ -8,25 +8,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   class WeatherApp {
     constructor() {
-      this.favorites = new Set(savedFavorites);
-      this.renderFavorites();
+      this.favourites = new Set(savedFavourites)
+      // this.renderFavourites()
     }
+
     async handleSearch(event) {
     }
+
     displayWeather(data) {
     }
+
     addFavourite(city) {
     }
+
     removeFavorite(city) {
     }
+
     // update local storage
+    
     renderFavorites() {
     }
+
     handleSearch(event, city) {
+      if (event) event.preventDefault()
+      cityInput.value = city
+      this.fetchAndDisplayWeather(city)
     }
+
     // async - fetch and display weather
   }
 
-  window.weatherApp = new WeatherApp();
-  // weatherForm.addEventListener('submit', event => weatherApp.handleSearch(event))
+  window.weatherApp = new WeatherApp()
+  weatherForm.addEventListener('submit', event => weatherApp.handleSearch(event))
 })
