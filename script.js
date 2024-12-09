@@ -1,4 +1,4 @@
-import { fetchWeather } from './weatherApi.js'
+import { fetchWeather } from './api/weatherApi'
 
 document.addEventListener('DOMContentLoaded', () => {
   const weatherForm = document.getElementById('weather-form')
@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async handleSearch(event) {
+      event.preventDefault()
+      const city = cityInput.value
+      if (city) {
+        try {
+          const weatherData = await fetchWeather(city);
+          this.displayWeather(weatherData)
+        } catch (error) {
+          console.error(error)
+          weatherResult.textContent = 'Failed to fetch weather data.'
+        }
+      }
     }
 
     displayWeather(data) {
@@ -26,12 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     addFavourite(city) {
+      this.favourites.add(city)
+      this.updateLocalStorage()
+      this.renderFavourites()
     }
 
     removeFavourite(city) {
+      this.favourites.delete(city)
+      this.updateLocalStorage()
+      this.renderFavourites()
     }
 
-    // update local storage
+    updateLocalStorage() {
+      localStorage.setItem('favourites', JSON.stringify([...this.favourites]))
+    }
     
     renderFavourites() {
       favouritesList.innerHTML = ''
