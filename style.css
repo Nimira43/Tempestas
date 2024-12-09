@@ -17,3 +17,21 @@ body {
   border: 2px solid #fffaf0;
   width: 300px;
 }
+
+.logo {
+  margin-top: 0;
+  font-family: 'Fredericka the Great', serif;
+}
+
+.city-input {
+  width: calc(100% - 50px);
+  padding: 0.5rem;
+  margin-right: 1rem;
+  background-color: #012222;
+  color: #fffaf0;
+  border: 2px solid #fffaf0;;
+  border-radius: 3px;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+}
