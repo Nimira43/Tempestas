@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displayWeather(data) {
+      const { name, weather, main } = data
+      weatherResult.innerHTML = `
+        <h3>${name}</h3>
+        <p>${weather[0].description}</p>
+        <p>Temperature: ${main.temp}K</p>
+        <button onclick="weatherApp.addFavourite('${name}')">Add to Favourites</button>
+      `
     }
 
     addFavourite(city) {
@@ -46,7 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
         this.fetchAndDisplayWeather(city)
     }
 
-    // async - fetch and display weather
+    async fetchAndDisplayWeather(city) {
+      try {
+        const weatherData = await fetchWeather(city)
+        this.displayWeather(weatherData)
+      } catch (error) {
+        console.error(error)
+        weatherResult.textContent = 'Failed to fetch weather data.'
+      }
+    }
   }
 
   window.weatherApp = new WeatherApp()
