@@ -1,10 +1,12 @@
-import { fetchWeather } from './api/weatherApi'
+import { fetchWeather } from './api/weatherApi.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const weatherForm = document.getElementById('weather-form')
   const cityInput = document.getElementById('city-input')
   const weatherResult = document.getElementById('weather-result')
   const favouritesList = document.getElementById('favourites-list')
+
+  const savedFavourites = JSON.parse(localStorage.getItem('favourites')) || []
 
   class WeatherApp {
     constructor() {
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const city = cityInput.value
       if (city) {
         try {
-          const weatherData = await fetchWeather(city);
+          const weatherData = await fetchWeather(city)
           this.displayWeather(weatherData)
         } catch (error) {
           console.error(error)
@@ -59,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'favourite-item'
         li.innerHTML = `
           ${city}
-          <button onclick='weatherApp.removeFavourite('${city}')'>Remove</button>
-          <button onclick='weatherApp.handleSearch(event, '${city}')'>View</button>
+          <button onclick="weatherApp.removeFavourite('${city}')">Remove</button>
+          <button onclick="weatherApp.handleSearch(event, '${city}')">View</button>
         `
         favouritesList.appendChild(li)
       })
@@ -68,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     handleSearch(event, city) {
       if (event) event.preventDefault()
-        cityInput.value = city
-        this.fetchAndDisplayWeather(city)
+      cityInput.value = city
+      this.fetchAndDisplayWeather(city)
     }
 
     async fetchAndDisplayWeather(city) {
