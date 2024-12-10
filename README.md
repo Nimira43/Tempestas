@@ -1,4 +1,4 @@
-## Tempestas 
+# Tempestas 
 #### by NimiraTech
 #### A JavaScript weather app using the OpenWeather API
 #### https://openweathermap.org
